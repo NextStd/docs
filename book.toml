@@ -2,3 +2,6 @@
 title = "NextStd Documentation"
 authors = ["Vaishnav Sabari Girish"]
 language = "en"
+
+[output.html]
+git-repository-url = "https://github.com/NextStd/nextstd"
