@@ -4,7 +4,7 @@
   - [Why NextStd?](intro/why-nextstd.md)
   - [Safety Guarantees](intro/safety.md)
 
-- [Getting Started](getting-started/README.md)
+- [Getting Started](getting-started/getting-started.md)
   - [Installation & Linking](getting-started/installation.md)
   - [Your First Program](getting-started/hello-world.md)
   - [Build System Integration](getting-started/build-systems.md)
