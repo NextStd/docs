@@ -9,18 +9,43 @@ intimidating, but standard tooling makes the process incredibly straightforward.
 Because NextStd exposes a standard Foreign Function Interface (FFI) boundary,
 your C compiler treats it exactly like any other legacy C library.
 
-## The 3-Step Integration Workflow
+> **Note: Alpha Stage Development** > Because NextStd is currently in active
+> Alpha, standalone integration (moving the headers and `.a` files to a
+> completely separate C project) requires manual linker configuration. For the
+> smoothest experience right now, we highly recommend working directly inside
+> the cloned NextStd project directory and utilizing the provided `examples/`
+> folder and Makefile!
 
-Using NextStd in any project always follows the same three basic steps:
+## The Integration Workflow
 
-1. **Build the Backend:** Use Rust's package manager (`cargo`) to compile the
-   NextStd source code into a static archive (`.a`) or dynamic shared object
-   (`.so` / `.dylib` / `.dll`).
-2. **Include the Headers:** Drop the `include/` directory containing `ns.h`,
-   `ns_error.h`, and `ns_string.h` into your C project so your compiler knows
-   the function signatures and macros.
-3. **Link and Compile:** Run `gcc` or `clang` on your C files, passing the
-   NextStd library file to the linker.
+Working within the NextStd repository follows a simple workflow:
+
+1. **Build the Backend:** First, compile the Rust source code into a static
+   archive (`.a`). We've wrapped Cargo in our Makefile, so you just need to run:
+
+   ```bash
+   make rust
+   ```
+
+2. **Write Your C Code:** Create a new `.c` file inside the `examples/`
+   directory. Since you are in the project folder, you can simply include the
+   core headers using relative paths:
+
+   ```c
+   #include "../include/ns.h"
+   #include "../include/ns_error.h"
+   ```
+
+3. **Link and Compile:** Instead of running raw `gcc` commands and manually
+   linking the Rust archive, use the built-in Makefile. You can view all
+   available example targets by running:
+
+   ```bash
+   make list
+   ```
+
+   *(To build and run a specific example, just type `make` followed by the
+   filename without the `.c` extension, e.g., `make 01_hello_world`!)*
 
 ## Prerequisites
 
@@ -31,10 +56,8 @@ has the required tools installed:
   embedded systems).
 * **The Rust Toolchain:** You need `cargo` and `rustc` installed to build the
   backend. (Available via [rustup.rs](https://rustup.rs/)).
-* **A Build System (Recommended):** While you can compile by typing raw `gcc`
-  commands into the terminal, we highly recommend using `Make` or `CMake` to
-  automate the compilation of both the Rust backend and the C frontend
-  simultaneously.
+* **Make:** To run the build scripts that seamlessly tie the Rust backend and C
+  frontend together.
 
 ## What's Next?
 
