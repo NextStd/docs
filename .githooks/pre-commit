@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+
+if [ -z "$FILES" ]; then
+  exit 0
+fi
+
+echo "Fixing markdown..."
+
+rumdl check $FILES --fix
+
+git add $FILES
