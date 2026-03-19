@@ -1,27 +1,27 @@
 # Your First Program
 
-Now that your environment is set up and the Rust backend is compiled, let's
-write your first memory-safe C program using NextStd.
+Now that your environment is set up and NextStd is installed globally on your
+system, let's write your first memory-safe C program.
 
 We are going to replace the traditional, unsafe `printf` function with NextStd's
 type-safe `ns_println` macro.
 
 ## The Basic Program
 
-If you are working inside the cloned repository, create a new file named
-`hello.c` inside the `examples/` directory.
+Create a new file named `hello.c` anywhere on your computer.
 
-Add the following code to print basic text and variables:
+Add the following code to print basic text and variables. Notice how we use
+standard angle brackets for the includes now that NextStd is a system library:
 
 ```c
-#include "../include/ns.h"
+#include <nextstd/ns.h>
 
 int main() {
     // 1. Printing a standard string
     ns_println("Hello, World! Welcome to NextStd.");
 
     // 2. Printing an integer safely without format specifiers
-    int version = 1;
+    int version = 2;
     ns_print("NextStd Version: ");
     ns_println(version); 
 
@@ -34,12 +34,17 @@ int main() {
 }
 ```
 
-To compile and execute this program, open your terminal in the root of the
-`NextStd` repository and run:
+To compile and execute this program, open your terminal and link the necessary
+NextStd I/O and Error modules:
 
 ```bash
-make hello
+gcc hello.c -lns_io -lns_error -o hello
+./hello
 ```
+
+*(Note: If you are testing locally inside the cloned repository instead of using
+the system-wide install, you can still just drop this in `examples/hello.c` and
+run `make hello`)*
 
 ## Adding Terminal Colors
 
@@ -47,11 +52,11 @@ NextStd also provides a dedicated, cross-platform color module to help you build
 beautiful CLI tools. You don't need to remember ANSI escape codes; you just
 include the header and use the macros.
 
-Create a second file named `hello_color.c` in your `examples/` directory:
+Create a second file named `hello_color.c`:
 
 ```c
-#include "../include/ns.h"
-#include "../include/ns_color.h" // Import the color macros
+#include <nextstd/ns.h>
+#include <nextstd/ns_color.h> // Import the color macros
 
 int main() {
     // Printing with a specific color and resetting it afterward
@@ -71,7 +76,8 @@ int main() {
 Compile and run this exactly like the first one:
 
 ```bash
-make hello_color
+gcc hello_color.c -lns_io -lns_error -o hello_color
+./hello_color
 ```
 
 ## How It Works
