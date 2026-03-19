@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"] # Or "master"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 # Grant the Action permission to deploy to GitHub Pages
 permissions:
   contents: read
