@@ -24,6 +24,10 @@
   - [Creating & Freeing Strings](string/lifecycle.md)
   - [String Concatenation](string/concatenation.md)
 
+- [Data Structures (`ns_data`)](data_structures/README.md)
+  - [Dynamic Arrays (`ns_vec`)](data_structures/vectors.md)
+  - [Key-Value Maps (`ns_hashmap`)](data_structures/hashmap.md)
+
 - [Examples](examples/README.md)
   - [Safe User Input](examples/safe-input.md)
   - [Building a CLI Menu](examples/cli-menu.md)
