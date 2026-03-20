@@ -44,7 +44,8 @@ int main() {
 ## Mixing Colors and Styles
 
 You can stack multiple macros together to combine colors with text formatting,
-such as making a cyan string bold. Just separate them with a space.
+such as making a string bold or underlining a URL. Just separate them with a
+space.
 
 ```c
 #include <nextstd/ns.h>
@@ -54,8 +55,8 @@ int main() {
     // Bold and Cyan text
     ns_println(NS_COLOR_BOLD NS_COLOR_CYAN "Starting NextStd Server..." NS_COLOR_RESET);
 
-    // Standard Magenta text
-    ns_println(NS_COLOR_MAGENTA "https://github.com/NextStd/nextstd" NS_COLOR_RESET);
+    // Underlined Magenta text
+    ns_println(NS_COLOR_UNDERLINE NS_COLOR_MAGENTA "https://github.com/NextStd/nextstd" NS_COLOR_RESET);
 
     return 0;
 }
@@ -68,7 +69,7 @@ changes the color of **all subsequent text** until it receives a reset command.
 
 If you forget to include `NS_COLOR_RESET` at the end of your `ns_println` call,
 every single thing your program (and potentially your user's terminal prompt)
-prints afterward will be stuck in that color!
+prints afterward will be stuck in that format!
 
 ## Available Macros Reference
 
@@ -87,6 +88,7 @@ Here is a list of the standard text styling macros available in `ns_color.h`:
 **Styles:**
 
 * `NS_COLOR_BOLD`
+* `NS_COLOR_UNDERLINE`
 
 **State Control:**
 

@@ -47,10 +47,16 @@ Fortunately, you don't have to manually extract it. Because `ns_print` and
 `ns_println` handle `ns_string` objects natively via C11 `_Generic` macros, you
 can simply pass the entire struct directly to print your managed string!
 
+You can also print struct properties like `len` seamlessly since `ns_io`
+natively supports C's `size_t` type.
+
 ```c
     // 2. Use the string
     ns_print("Message: ");
     ns_println(my_text); // No need to access inner pointers!
+
+    ns_print("Length: ");
+    ns_println(my_text.len); // Prints size_t seamlessly
 ```
 
 ## 3. Destruction (`ns_string_free`)
@@ -93,7 +99,10 @@ int main() {
 
         // 2. Usage
         ns_print("The string is: ");
-        ns_println(greeting); // Magically works!
+        ns_println(greeting); 
+
+        ns_print("Length: ");
+        ns_println(greeting.len);
 
     } NS_EXCEPT(err, NS_ERROR_ANY) {
         ns_print("Error: ");
