@@ -20,7 +20,8 @@ Before installing, ensure your system has the required build tools:
    *👉 **Note for beginners:** The script will pause. Press `1` and hit `Enter`
    to proceed with the default installation.*
 
-   > [!IMPORTANT] > Once the installation finishes, you must tell your current
+   > [!IMPORTANT]
+   > Once the installation finishes, you must tell your current
    terminal where Rust is installed. Run this command:
 
    ```bash
