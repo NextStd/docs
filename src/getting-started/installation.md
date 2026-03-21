@@ -10,29 +10,51 @@ Here is how to get your environment set up in under two minutes.
 
 Before installing, ensure your system has the required build tools:
 
-1. **Rust & Cargo**: To compile the safe backend.
+1. **Rust & Cargo**: To compile the safe back end. Run the official installer in
+   your terminal:
 
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
+   *👉 **Note for beginners:** The script will pause. Press `1` and hit `Enter`
+   to proceed with the default installation.*
+
+   > [!IMPORTANT] > Once the installation finishes, you must tell your current
+   terminal where Rust is installed. Run this command:
+
+   ```bash
+   source $HOME/.cargo/env
+   ```
+
+   *(Alternatively, you can just close your terminal and open a new one).*
 2. **GCC or Clang**: For the C front-end and macro expansion.
 3. **Make**: For build automation.
+
+---
 
 ## Step 1: Clone the Repository
 
 Grab the latest version of the NextStd source code from GitHub:
 
 ```bash
-git clone https://github.com/NextStd/NextStd.git
-cd NextStd
+git clone https://github.com/NextStd/nextstd.git
+cd nextstd
 ```
 
 ## Step 2: System-Wide Installation (Recommended)
 
-To make NextStd available to all your C projects, run the install command. This
-builds the highly optimized Rust release binaries and copies them, along with
-the C headers, into your system's standard `/usr/local` directories.
+To make NextStd available to all your C projects, you need to build the
+optimized Rust binaries and install them globally.
+
+First, build the core libraries (this runs safely as your normal user):
+
+```bash
+make rust
+```
+
+Then, install the headers and static archives into your system's standard
+`/usr/local` directories (this requires root privileges to copy the files):
 
 ```bash
 sudo make install
@@ -47,6 +69,8 @@ sudo make install
 
 *(To completely remove the library from your system later, simply run `sudo make
 uninstall` from the repository root).*
+
+---
 
 ## Step 3: Linking in Your Projects
 
@@ -73,10 +97,13 @@ gcc main.c -lns_data -lns_io -lns_string -lns_error -lpthread -ldl -lm -o my_saf
 * **`-lpthread`, `-ldl`, `-lm`**: Standard system libraries required by the Rust
   backend on standard Linux/macOS environments.
 
+---
+
 ## Alternative: Local Testing
 
 If you want to test the library, develop new modules, or run the built-in
-examples without installing it system-wide, you can build the backend locally:
+examples without installing it system-wide, you can build the backend locally
+without `sudo`:
 
 ```bash
 make rust
@@ -84,6 +111,17 @@ make rust
 
 Then, run one of the pre-configured examples (do not include the `.c`
 extension):
+
+To list all the examples use:
+
+```bash
+make list
+```
+
+And then you can use the example names as given below.
+
+> [!NOTE]
+> Note the absence of the `.c` extension
 
 ```bash
 make 01_print_integer

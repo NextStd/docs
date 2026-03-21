@@ -35,4 +35,3 @@ who want the safety guarantees of a modern language without actually having to
 rewrite their entire codebase in Rust. It compiles down to a standard static or
 dynamic C library (`.a`, `.so`, `.dylib`, or `.dll`) and links identically t
 o any standard C dependency.
-
