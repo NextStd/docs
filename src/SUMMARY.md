@@ -28,10 +28,16 @@
   - [Dynamic Arrays (`ns_vec`)](data_structures/vectors.md)
   - [Key-Value Maps (`ns_hashmap`)](data_structures/hashmap.md)
 
+- [Command Execution (`ns_cmd`)](cmd/README.md)
+  - [Running Shell Commands](cmd/execution.md)
+  - [Capturing Stdout & Stderr](cmd/output-capturing.md)
+  - [Auto-Cleanup (RAII in C)](cmd/auto-cleanup.md)
+
 - [Examples](examples/README.md)
   - [Safe User Input](examples/safe-input.md)
   - [Building a CLI Menu](examples/cli-menu.md)
   - [String Manipulation](examples/string-manipulation.md)
+  - [Process Execution & Auto-Free](examples/process-exec.md)
 
 - [Contributing](contributing/README.md)
   - [Architecture Overview](contributing/architecture.md)
